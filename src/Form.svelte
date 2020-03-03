@@ -1,16 +1,19 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+
   let word = '';
 
-  const getSynonyms = async () => {
-    await fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${word}?key=`)
-      .then(res => res.json() )
-      .then(data => console.log(data[0].meta.syns))
-	}
+  const clickHandler = () => {
+    dispatch('message', {
+      text: word
+    })
+  }
 </script>
 
 <form>
   <input type="text" bind:value={word}>
-  <button class="submit-btn" type="button" on:click={getSynonyms}>Submit</button>
+  <button class="submit-btn" type="button" on:click={clickHandler}>Submit</button>
 </form>
 
 
