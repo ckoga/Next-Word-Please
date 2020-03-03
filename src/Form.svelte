@@ -1,6 +1,16 @@
+<script>
+  let word = '';
+
+  const getSynonyms = async () => {
+    await fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${word}?key=`)
+      .then(res => res.json() )
+      .then(data => console.log(data[0].meta.syns))
+	}
+</script>
+
 <form>
-  <input type="text">
-  <button class="submit-btn" type="button">Submit</button>
+  <input type="text" bind:value={word}>
+  <button class="submit-btn" type="button" on:click={getSynonyms}>Submit</button>
 </form>
 
 
