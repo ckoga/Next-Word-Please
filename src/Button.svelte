@@ -17,6 +17,8 @@
 	border-radius: 50px;
 	background-color: #ff3e00;
 	color: white;
-	cursor: pointer;
+  cursor: pointer;
+  margin: 7px;
+  padding: 10px;
 }
 </style>
