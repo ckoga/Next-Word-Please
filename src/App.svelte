@@ -22,7 +22,7 @@
 	<p>We'll give you a few:</p>
 	<section class="button-container">
 		{#each synonyms as synonym}
-			<Button data={synonym}/>
+			<Button data={synonym} on:message={getSynonyms}/>
 		{/each}
 	</section>
 </main>

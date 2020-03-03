@@ -1,8 +1,16 @@
 <script>
-  export let data
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+
+  export let data;
+  const clickHandler = () => {
+    dispatch('message', {
+      text: data
+    })
+  }
 </script>
 
-<button class='synonyms' type="button">{data}</button>
+<button class='synonyms' type="button" on:click={clickHandler}>{data}</button>
 
 <style>
   .synonyms {
