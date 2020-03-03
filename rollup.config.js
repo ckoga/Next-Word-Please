@@ -1,4 +1,5 @@
 import svelte from 'rollup-plugin-svelte';
+import replace from '@rollup/plugin-replace';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
@@ -15,6 +16,10 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		replace({ 
+			API_KEY: 'c465fb9f-f231-4723-abe4-e8969e5741a8',
+			delimiters: ['', ''] 
+		}),
 		svelte({
 			// enable run-time checks when not in production
 			dev: !production,

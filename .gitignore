@@ -1,4 +1,6 @@
 /node_modules/
 /public/build/
+/rollup.config.js/
 
 .DS_Store
+.rollup.config.js

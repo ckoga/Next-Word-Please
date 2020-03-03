@@ -1,6 +1,19 @@
+<script>
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+
+  let word = '';
+
+  const clickHandler = () => {
+    dispatch('message', {
+      text: word
+    })
+  }
+</script>
+
 <form>
-  <input type="text">
-  <button class="submit-btn" type="button">Submit</button>
+  <input type="text" bind:value={word}>
+  <button class="submit-btn" type="button" on:click={clickHandler}>Submit</button>
 </form>
 
 
