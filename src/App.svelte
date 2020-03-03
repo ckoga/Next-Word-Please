@@ -1,5 +1,4 @@
 <script>
-	import 
 	import Form from './Form.svelte';
 	import Button from './Button.svelte';
 
@@ -8,7 +7,9 @@
 	const getSynonyms = async (event) => {
     await fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${event.detail.text}?key=API_KEY`)
       .then(res => res.json())
-      .then(data => synonyms = data[0].meta.syns)
+      .then(data => {
+				synonyms = data[0].meta.syns[0]
+				})
       .catch(err => console.log(err))
 	}
 </script>
@@ -20,7 +21,9 @@
 	<Form on:message={getSynonyms}/>
 	<p>We'll give you a few:</p>
 	<section class="button-container">
-		<Button data={synonyms}/>
+		{#each synonyms as synonym}
+			<Button data={synonym} on:message={getSynonyms}/>
+		{/each}
 	</section>
 </main>
 
